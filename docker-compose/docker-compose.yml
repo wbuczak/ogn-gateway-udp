@@ -1,0 +1,14 @@
+version: '2'
+services:
+
+    ogn-gateway-udp:
+      image: ogndocker/ogn-gateway-udp:latest
+      hostname: ogn-gateway-udp
+      environment:
+        - OGN_GATEWAY_SIMULATION=false
+        - OGN_GATEWAY_APRS_FILTER="t/* -p/FNT"
+        - OGN_GATEWAY_LOG_DIR=/var/log/ogn-gateway
+        - OGN_GATEWAY_PLUGIN_UDP_MULTICAST_GROUP="230.0.0.0"
+        - OGN_GATEWAY_PLUGIN_UDP_MULTICAST_PORT="4446"
+      volumes:
+        - "C:/tmp/ogn/ogn-gateway/log/:/var/log/ogn-gateway"
