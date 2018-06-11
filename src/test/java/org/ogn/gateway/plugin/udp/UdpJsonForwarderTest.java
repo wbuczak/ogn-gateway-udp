@@ -21,7 +21,7 @@ public class UdpJsonForwarderTest {
 
 	static {
 		System.setProperty("ogn.gateway.plugin.udp.multicast_group", MULTICAST_GROUP);
-		System.setProperty("ogn.gateway.udp.multicast_port", MULTICAST_PORT);
+		System.setProperty("ogn.gateway.plugin.udp.multicast_port", MULTICAST_PORT);
 	}
 
 	UdpJsonForwarder	forwarder;
