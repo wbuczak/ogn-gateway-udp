@@ -44,10 +44,10 @@ public class UdpJsonForwarder implements OgnAircraftBeaconForwarder {
 		@Value("${ogn.gateway.plugin.udp.multicast_group:#{systemProperties['OGN_GATEWAY_PLUGIN_UDP_MULTICAST_GROUP']}}")
 		String	multicastGroup;
 
-		@Value("${ogn.gateway.udp.multicast_port:#{systemProperties['OGN_GATEWAY_PLUGIN_UDP_MULTICAST_PORT'] ?: 0}}")
+		@Value("${ogn.gateway.plugin.udp.multicast_port:#{systemProperties['OGN_GATEWAY_PLUGIN_UDP_MULTICAST_PORT'] ?: 0}}")
 		int		multicastPort;
 
-		@Value("${ogn.gateway.udp.multicast_ttl:#{systemProperties['OGN_GATEWAY_PLUGIN_UDP_MULTICAST_TTL'] ?: 1}}")
+		@Value("${ogn.gateway.plugin.udp.multicast_ttl:#{systemProperties['OGN_GATEWAY_PLUGIN_UDP_MULTICAST_TTL'] ?: 1}}")
 		int		ttl;
 
 	}
@@ -61,7 +61,11 @@ public class UdpJsonForwarder implements OgnAircraftBeaconForwarder {
 					ctx = new ClassPathXmlApplicationContext("classpath:udpforwarder-application-context.xml");
 					ctx.getEnvironment().setDefaultProfiles("PRO");
 					config = ctx.getBean(Config.class);
+
+					LOG.info("configured plugin(group: {}, port: {}, ttl: {})", config.multicastGroup,
+							config.multicastPort, config.ttl);
 					initialized = true;
+
 				} catch (final Exception ex) {
 					LOG.error("context initialization failed", ex);
 				}
