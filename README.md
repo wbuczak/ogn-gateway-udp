@@ -1,2 +1,2 @@
 # ogn-gateway-udp
-ogn gateway plugin: UDP multicast publisher of OGN beacons (in JSON format) 
+sends (UDP multicast) OGN aircraft beacons (with descriptors if available) in JSON format
